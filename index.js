@@ -13,10 +13,10 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run(){
      try{
           const carsCollection = client.db('autoWorld').collection('cars');
-          app.get('/carsOptions', async(req, res)=>{
+          app.get('/carOptions', async(req, res)=>{
             const search =  req.query.search;
             let query = {};
-            if(search.length){
+            if(search != undefined && search.length){
                 query = {
                     $text :{
                         $search: search
